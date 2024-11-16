@@ -4,7 +4,7 @@ const catchAsync = require("../utils/catchAsync");
 
 exports.sendEmailTo = catchAsync(async (req, res) => {
   console.log(req.body);
-  sendEmail(req.body);
+  sendEmail(req);
 
   res.status(200).json({
     status: "Send success",
