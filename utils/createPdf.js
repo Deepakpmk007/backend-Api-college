@@ -1,4 +1,3 @@
-// pdfGenerator.js
 const puppeteer = require("puppeteer");
 const fs = require("fs");
 const path = require("path");
@@ -97,41 +96,28 @@ async function generatePDF(data) {
 </html>
 
   `;
-  // Read the HTML template
-  // let html = fs.readFileSync("template.html", "utf8");
-  // // Replace placeholders with actual data
-  // html = html.replace("{{id}}", data.id || "nil");
-  // html = html.replace("{{uniqueId}}", data.uniqueId || "nil");
-  // html = html.replace("{{name}}", data.name || "nil");
-  // html = html.replace("{{dateOfBirth}}", data.dateOfBirth || "nil");
-  // html = html.replace("{{regNo}}", data.regNo || "nil");
-  // html = html.replace("{{degree}}", data.drgree || "nil");
-  // html = html.replace("{{branch}}", data.Branch || "nil");
-  // html = html.replace("{{yearOfPassing}}", data.yearOfPassing || "nil");
-  // html = html.replace("{{yearOfStudy}}", data.yearOfStudy || "nil");
-  // html = html.replace("{{CGPA}}", data.CGPA || "nil");
-  // html = html.replace("{{ClassObtained}}", data.classObtain || "nil");
-  // html = html.replace("{{Backlogs}}", data.backlogs || "nil");
 
-  // // Launch Puppeteer browser to generate PDF
-  const browser = await puppeteer.launch();
+  // Launch Puppeteer browser to generate PDF
+  const browser = await puppeteer.launch({
+    executablePath: "/path/to/google-chrome", // Replace with your actual Chrome binary path
+    headless: true,
+    args: ["--no-sandbox", "--disable-setuid-sandbox"], // Required for some server environments
+  });
+
   const page = await browser.newPage();
 
-  // Set content to the modified HTML
   await page.setContent(htmlContent);
 
-  // Path to save the PDF locally
   const pdfPath = path.join("./out/output.pdf");
 
-  // Generate PDF and save it to the file system
   await page.pdf({
-    path: pdfPath, // Save to a local file
+    path: pdfPath,
     format: "A4",
     printBackground: true,
   });
 
   await browser.close();
-  return pdfPath; // Return the file path
+  return pdfPath;
 }
 
 module.exports = generatePDF;
