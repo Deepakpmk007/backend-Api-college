@@ -99,7 +99,8 @@ async function generatePDF(data) {
 
   // Launch Puppeteer browser to generate PDF
   const browser = await puppeteer.launch({
-    executablePath: "/path/to/google-chrome", // Replace with your actual Chrome binary path
+    executablePath:
+      "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
     headless: true,
     args: ["--no-sandbox", "--disable-setuid-sandbox"], // Required for some server environments
   });
