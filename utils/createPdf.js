@@ -10,49 +10,60 @@ async function generatePDF(data) {
   const htmlContent = `
   <html lang="en">
     <head>
-      <style>
-        body {
-          font-family: Arial, sans-serif;
-          margin: 20px;
-        }
-        header {
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          align-items: center;
-        }
-        h1 {
-          text-align: center;
-          font-size: 1.2rem;
-          text-transform: uppercase;
-        }
-        table {
-          width: 100%;
-          border-collapse: collapse;
-          margin-top: 20px;
-        }
-        table,
-        th,
-        td {
-          border: 1px solid black;
-        }
-        th,
-        td {
-          padding: 8px;
-          text-align: left;
-        }
-        th {
-          background-color: #f2f2f2;
-        }
-        section {
-          display: flex;
-          flex-direction: row;
-          margin-top: 150px;
-          justify-content: space-between;
-        }
-          
-      </style>
-    </head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Data PDF</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20mm; /* PDF-friendly margin */
+        font-size: 12px; /* Optimized font size for PDF */
+      }
+      header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10mm;
+      }
+      h1 {
+        font-size: 16px;
+        text-transform: uppercase;
+        margin: 0;
+        padding: 0;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 5mm;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+      th,
+      td {
+        padding: 5px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+        font-size: 12px;
+      }
+      td {
+        font-size: 11px;
+      }
+      section {
+        display: flex;
+         flex-direction: row;
+        font-size: 12px;
+        justify-content: space-between;
+        gap:30px;
+        margin-top: 20mm;
+      }
+      
+    </style>
+  </head>
     <body>
       <header>
         <h1>Government College of Engineering Srirangam</h1>
